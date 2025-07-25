@@ -4,7 +4,6 @@ import pandas as pd
 import numpy as np
 import re
 import string
-import pickle
 import joblib
 import nltk
 from nltk.corpus import stopwords
@@ -203,7 +202,7 @@ def train_and_save_models(dataset_path, csv_file_in_zip, text_column, label_colu
     print("\nSaving TF-IDF Vectorizer and best ML model...")
     try:
         with open('tfidf_vectorizer.pkl', 'wb') as f:
-            pickle.dump(tfidf_vectorizer, f)
+            joblib.dump(tfidf_vectorizer, f)
         joblib.dump(best_ml_model, 'phishing_model.pkl')
         print("TF-IDF Vectorizer saved as 'tfidf_vectorizer.pkl'")
         print(f"Best model ({best_model_name}) saved as 'phishing_model.pkl'")
